@@ -25,6 +25,12 @@ Sortowanie jest możliwe po nazwie oraz po dacie księgowania. Należy kliknąć
 Wyszukiwanie działa po nazwie rekordu bądź po jego dacie księgowania. Należy wpisać w wyszukiwarke i wcisnąć przycisk "Szukaj". Działa wyszuiwanie częściowe, oznacza to, że wystarczy wpisać tylko część nazwy/daty rekordu którego szukamy.
 
 
+## Strony
+
+Na jednej stronie mieszczą się 4 rekordy, jeżeli będzie ich więcej, to zaczną pojawiać się one na kolejnej stronie, a także pojawi się menu nawigacyjne między stronami
+
+<img src="/img/5.png">
+
 ## XML
 
 Przycisk XML generuje nam plik który zawiera dane wszystkich komputerów 
