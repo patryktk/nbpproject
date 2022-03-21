@@ -35,7 +35,7 @@
         <td th:text="${computer.getPrice_USD()}"></td>
         <td th:text="${computer.getPrice_PLN()}"></td>
         <td><a th:href="@{/editComputer/{id}(id=${computer.id})}" class="btn btn-secondary">Edytuj</a>
-        <a th:href="@{/deleteComputerM/{id}(id=${computer.id})}" class="btn btn-danger">Usuń</a>
+        <a th:href="@{/deleteComputer/{id}(id=${computer.id})}" class="btn btn-danger">Usuń</a>
         </td>
     </tr>
     </tbody>
