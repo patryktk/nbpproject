@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/saveComputer}" th:object="${computerModel}" method="POST">
+    <input type="text" th:field="*{name}" placeholder="Nazwa" class="form-control mb-4 col-4">
+
+    <input type="date" th:field="*{date}" placeholder="Data zaksięgowania" class="form-control mb-4 col-4">
+
+    <input type="text" th:field="*{price_USD}" placeholder="Cena USD" class="form-control mb-4 col-4">
+
+
+
+
+    <button type="submit" class="btn btn-info col-2"> Dodaj komputer</button>
+</form>
+
+</body>
+</html>
