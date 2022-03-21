@@ -3,6 +3,7 @@ package pl.tkaczyk.nbpproject.controler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -42,7 +43,7 @@ public class ComputerContoller {
                                 @RequestParam(name = "sortField") String sortField,
                                 @RequestParam(name = "sortDirection") String sortDirection,
                                 Model model, String keyword){
-        int pageSize = 5;
+        int pageSize = 4;
 
         Page<ComputerModel> page = computerService.findPaginatedSearch(pageNumber, pageSize, sortField, sortDirection, keyword);
         List<ComputerModel> computerModelList = page.getContent();

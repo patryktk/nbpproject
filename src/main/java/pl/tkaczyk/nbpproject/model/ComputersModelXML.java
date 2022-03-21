@@ -1,6 +1,5 @@
 package pl.tkaczyk.nbpproject.model;
 
-import javax.naming.Name;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;

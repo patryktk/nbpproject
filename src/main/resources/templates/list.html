@@ -2,32 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Lista</title>
 </head>
 <body>
 
-
-
-<a th:href="@{/addComputer}" class="btn btn-primary btn-sm mb-3"> Dodaj komputer </a>
-<a th:href="@{/xml}" class="btn btn-primary btn-sm mb-3"> XML </a>
-<form th:action="@{/}">
-    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+<form th:action="@{/}" class="form-inline">
+    <input type="text" class="form-control" placeholder="Wyszukaj" name="keyword" id="keyword" th:value="${keyword}" required />
     &nbsp;
-    <input type="submit" value="Search" />
+    <input type="submit" class="btn btn-success" value="Szukaj" />
     &nbsp;
-    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+    <input type="button" value="Wyczyść" id="btnClear" class="btn btn-warning" onclick="clearSearch()" />
 </form>
-<table id="table" border="1" class="table table-striped table-responsive-md">
+<table id="table" class="table table-bordered table.sm table-responsive">
     <thead>
-    <tr>
+    <tr style="text-align: center; vertical-align: middle">
         <th>
-            <a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDirection='+${reverseSortDirection}">Nazwa</a>
+            <a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDirection='+${reverseSortDirection}}">Nazwa</a>
         </th>
         <th>
             <a th:href="@{'/page/' + ${currentPage} + '?sortField=date&sortDirection='+${reverseSortDirection}}">Data Ksiegowania</a>
         </th>
         <th>Cena USD</th>
         <th>Cena PLN</th>
+        <th>Opcje</th>
     </tr>
     </thead>
     <tbody>
@@ -36,34 +34,45 @@
         <td th:text="${computer.getDate()}"></td>
         <td th:text="${computer.getPrice_USD()}"></td>
         <td th:text="${computer.getPrice_PLN()}"></td>
-        <td><a th:href="@{/editComputer/{id}(id=${computer.id})}" class="btn btn-danger">Edytuj</a>
-        <a th:href="@{/deleteComputer/{id}(id=${computer.id})}" class="btn btn-danger">Usuń</a>
+        <td><a th:href="@{/editComputer/{id}(id=${computer.id})}" class="btn btn-secondary">Edytuj</a>
+        <a th:href="@{/deleteComputerM/{id}(id=${computer.id})}" class="btn btn-danger">Usuń</a>
         </td>
     </tr>
     </tbody>
-</table>
-<div th:if = "${totalPages > 1}">
-    <div class="row col-sm-10">
-        <div class = "col-sm-2">
-            Total Rows: [[${totalItems}]]
-        </div>
-        <div class = "col-sm-1">
+    <thead th:if = "${totalPages > 1}">
+    <tr style="text-align: center; vertical-align: middle">
+        <th colspan="5">
+                <div class="row col-sm">
+<!--                    <div class = "col-sm">-->
+<!--                        Liczba komputerów: [[${totalItems}]]-->
+<!--                    </div>-->
+                    <div class = "col-sm">
             <span th:each="i: ${#numbers.sequence(1,totalPages)}">
                 <a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}}">[[${i}]]</a>
                 <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
             </span>
-        </div>
-        <div class = "col-sm-1">
-            <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
-            <span th:unless="${currentPage < totalPages}">Next</span>
-        </div>
-        <div class = "col-sm-1">
-            <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last</a>
-            <span th:unless="${currentPage < totalPages}">Last</span>
-        </div>
-    </div>
-</div>
+                    </div>
+                    <div class = "col-sm">
+                        <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+                        <span th:unless="${currentPage < totalPages}">Next</span>
+                    </div>
+                    <div class = "col-sm">
+                        <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last</a>
+                        <span th:unless="${currentPage < totalPages}">Last</span>
+                    </div>
+                </div>
+        </th>
+    </tr>
+    </thead>
+</table>
 
+
+<form class="form-inline">
+    &nbsp;
+    <a th:href="@{/addComputer}" class="btn btn-outline-primary btn-sm mb-3"> Dodaj komputer </a>
+    &nbsp;&nbsp;
+    <a th:href="@{/xml}" class="btn btn-outline-info btn-sm mb-3"> XML </a>
+</form>
 </body>
 <script type="text/javascript">
     function clearSearch() {

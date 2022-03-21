@@ -15,7 +15,7 @@ public class APIController {
 
     public static final String URL = "http://api.nbp.pl/api/exchangerates/rates/c/usd/";
 
-    public BigDecimal getCurrency(String date){
+    public BigDecimal getCurrency(String date) {
         Currency currency = restTemplate.getForObject(URL + date + "/?format=json", Currency.class);
         return BigDecimal.valueOf(currency.getRates().get(0).getBid());
     }
